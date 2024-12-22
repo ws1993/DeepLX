@@ -1,10 +1,6 @@
-# syntax=docker/dockerfile:1
-
-FROM golang:1.19 AS builder
+FROM golang:1.23.4 AS builder
 WORKDIR /go/src/github.com/OwO-Network/DeepLX
-COPY main.go ./
-COPY go.mod ./
-COPY go.sum ./
+COPY . .
 RUN go get -d -v ./
 RUN CGO_ENABLED=0 go build -a -installsuffix cgo -o deeplx .
 
